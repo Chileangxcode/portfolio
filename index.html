@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ផលប័ត្ររបស់ខ្ញុំ (Portfolio)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary-color: #2563eb; /* ពណ៌ខៀវ */
+        --secondary-color: #1e293b; /* ពណ៌ទឹកប៊ិចក្រម៉ៅ */
+        --accent-color: #3b82f6;
+        --bg-color: #f8fafc;
+        --text-color: #334155;
+        --white: #ffffff;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Kantumruy Pro", sans-serif; /* ប្រើពុម្ពអក្សរ Kantumruy Pro */
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.7;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        overflow-x: hidden;
+      }
+
+      /* --- Navigation --- */
+      nav {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Hamburger Menu Icon (Hidden on Desktop) */
+      .hamburger {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--secondary-color);
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.8),
+            rgba(15, 23, 42, 0.8)
+          ),
+          url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: var(--white);
+        padding: 0 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        font-weight: 700;
+      }
+
+      .hero-content p {
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        color: #e2e8f0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 35px;
+        background: var(--primary-color);
+        color: white;
+        border: 2px solid var(--primary-color);
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        margin: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: transparent;
+        color: var(--white);
+        transform: translateY(-3px);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 2px solid var(--white);
+        color: var(--white);
+      }
+
+      .btn-outline:hover {
+        background: var(--white);
+        color: var(--secondary-color);
+      }
+
+      /* --- General Layout --- */
+      section {
+        padding: 5rem 10%;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--secondary-color);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: var(--primary-color);
+        margin: 10px auto 0;
+        border-radius: 2px;
+      }
+
+      /* --- About Section --- */
+      #about {
+        background: var(--white);
+      }
+
+      .about-container {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+      }
+
+      .about-img {
+        flex: 1;
+        position: relative;
+      }
+
+      .about-img img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 20px 20px 0px var(--primary-color); /* Effect */
+        transition: transform 0.3s;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--secondary-color);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .skill-item {
+        background: #eff6ff;
+        padding: 10px;
+        text-align: center;
+        border-radius: 8px;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      /* --- Projects Section --- */
+      #projects {
+        background: var(--bg-color);
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .project-card {
+        background: var(--white);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .project-img {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .project-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .project-card:hover .project-img img {
+        transform: scale(1.1);
+      }
+
+      .project-info {
+        padding: 1.5rem;
+      }
+
+      .project-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+      }
+
+      .project-tags {
+        margin-top: 1rem;
+      }
+
+      .project-tags span {
+        display: inline-block;
+        background: #f1f5f9;
+        color: var(--text-color);
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+
+      /* --- Contact Section --- */
+      #contact {
+        background: var(--white);
+        max-width: 800px;
+        margin: 4rem auto;
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: var(--shadow);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: "Kantumruy Pro", sans-serif;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+
+      /* --- Footer --- */
+      footer {
+        background: var(--secondary-color);
+        color: var(--white);
+        text-align: center;
+        padding: 3rem 1rem;
+      }
+
+      .social-links {
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        color: #cbd5e1;
+        font-size: 1.5rem;
+        margin: 0 15px;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: var(--white);
+      }
+
+      /* --- MOBILE RESPONSIVE --- */
+      @media (max-width: 992px) {
+        .about-container {
+          flex-direction: column;
+          text-align: center;
+        }
+        .about-img {
+          max-width: 400px;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block; /* បង្ហាញរូប hamburger */
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          background: var(--white);
+          width: 100%;
+          flex-direction: column;
+          text-align: center;
+          padding: 2rem 0;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          transition: 0.3s ease-in-out;
+          gap: 1.5rem;
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .hero-content h1 {
+          font-size: 2.2rem;
+        }
+
+        section {
+          padding: 4rem 5%;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        #contact {
+          margin: 2rem 5%;
+          padding: 2rem;
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo">លាង.Code</a>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">ទំព័រដើម</a></li>
+        <li><a href="#about">អំពីខ្ញុំ</a></li>
+        <li><a href="#projects">គម្រោង</a></li>
+        <li><a href="#contact">ទំនាក់ទំនង</a></li>
+      </ul>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>
+          សួស្តី! ខ្ញុំឈ្មោះ
+          <span style="color: var(--primary-color)">អ៊ូ ជីលាង</span><br />Web
+          Developer
+        </h1>
+        <p>
+          ខ្ញុំបង្កើតគេហទំព័រដែលស្អាត និងទំនើប សម្រាប់អាជីវកម្មរបស់អ្នក។
+          ផ្តោតលើគុណភាព និងការប្រើប្រាស់ងាយស្រួល។
+        </p>
+        <div>
+          <a href="#projects" class="btn">មើលស្នាដៃ</a>
+          <a href="#contact" class="btn btn-outline">ទាក់ទងខ្ញុំ</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">អំពីខ្ញុំ</h2>
+      <div class="about-container">
+        <div class="about-img">
+          <img
+            src="https://images.unsplash.com/photo-1669023414180-4dcf35d943e1?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Profile Picture"
+          />
+        </div>
+        <div class="about-text">
+          <h3>អ្នកអភិវឌ្ឍន៍ដែលមានគំនិតច្នៃប្រឌិត</h3>
+          <p>
+            ខ្ញុំគឺជាអ្នកអភិវឌ្ឍន៍កម្មវិធីដែលមានបទពិសោធន៍ក្នុងការបង្កើតគេហទំព័រ
+            ដោយប្រើបច្ចេកវិទ្យាចុងក្រោយ។ ខ្ញុំស្រលាញ់ការសរសេរកូដ និងការរចនា
+            UX/UI ដើម្បីផ្តល់នូវបទពិសោធន៍ដ៏ល្អបំផុតដល់អ្នកប្រើប្រាស់។
+          </p>
+          <div class="skills-grid">
+            <div class="skill-item">HTML/CSS</div>
+            <div class="skill-item">JavaScript</div>
+            <div class="skill-item">React JS</div>
+            <div class="skill-item">Node.js</div>
+            <div class="skill-item">UI Design</div>
+            <div class="skill-item">Database</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">គម្រោងរបស់ខ្ញុំ</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-img">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Project 1"
+            />
+          </div>
+          <div class="project-info">
+            <h3>គេហទំព័រ E-commerce</h3>
+            <p>ប្រព័ន្ធលក់ទំនិញអនឡាញ ដែលមានការគ្រប់គ្រងស្តុក និងការទូទាត់។</p>
+            <div class="project-tags">
+              <span>React</span>
+              <span>Node.js</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Project 2"
+            />
+          </div>
+          <div class="project-info">
+            <h3>កម្មវិធីគ្រប់គ្រងទិន្នន័យ</h3>
+            <p>Dashboard សម្រាប់មើលទិន្នន័យលក់ និងស្ថិតិផ្សេងៗ។</p>
+            <div class="project-tags">
+              <span>Vue.js</span>
+              <span>Firebase</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">
+            <img
+              src="https://images.unsplash.com/photo-1526925539332-aa3b66e35444?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Project 3"
+            />
+          </div>
+          <div class="project-info">
+            <h3>App ស្វែងរកការងារ</h3>
+            <p>
+              កម្មវិធីដែលអនុញ្ញាតឱ្យអ្នកស្វែងរកការងារ
+              និងដាក់ពាក្យបានយ៉ាងងាយស្រួល។
+            </p>
+            <div class="project-tags">
+              <span>Flutter</span>
+              <span>API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">ទាក់ទងខ្ញុំ</h2>
+      <form class="contact-form">
+        <div class="form-group">
+          <label>ឈ្មោះ</label>
+          <input type="text" required />
+        </div>
+        <div class="form-group">
+          <label>អ៊ីមែល</label>
+          <input type="email" required />
+        </div>
+        <div class="form-group">
+          <label>សាររបស់អ្នក</label>
+          <textarea rows="5" required></textarea>
+        </div>
+        <button
+          type="submit"
+          class="btn"
+          style="width: 100%; border-radius: 8px"
+        >
+          ផ្ញើសារឥឡូវនេះ
+        </button>
+      </form>
+    </section>
+
+    <footer>
+      <p>©ជីលាង 2026 រក្សាសិទ្ធិគ្រប់យ៉ាង។ រចនាដោយកូនខ្មែរ។</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // បិទ Menu ពេលចុចលើ Link ណាមួយ
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+    </script>
+  </body>
+</html>
